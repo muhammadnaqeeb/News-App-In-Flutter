@@ -55,6 +55,20 @@ class Article extends Equatable {
         imageUrl: "https://images.mktw.net/im-608127/social",
         views: 2025,
         createdAt: DateTime.now()),
+    Article(
+        id: '3',
+        title:
+            "Elon Musk announces price hike for Tesla's Full Self-Driving feature",
+        subtitle: "SpaceX CEO Elon Musk has announced a price",
+        body:
+            "SpaceX CEO Elon Musk has announced a price hike for Tesla's Full Self-Driving feature that will be implemented into its pricing next month. Continue reading at TweakTown >",
+        author: 'Jak Connor',
+        authorImageUrl:
+            "https://static.tweaktown.com/news/8/8/88053_02_elon-musk-announces-price-hike-for-teslas-full-self-driving-feature_full.jpg",
+        category: 'cars',
+        imageUrl: "https://images.mktw.net/im-608127/social",
+        views: 2025,
+        createdAt: DateTime.now()),
   ];
 
   @override
