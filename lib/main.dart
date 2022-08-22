@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:news/screens/discover_screen.dart';
+import 'package:news/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +16,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
+      initialRoute: '/',
+      routes: {
+        HomeScreen.routeName: (context) => const HomeScreen(),
+        DiscoverScreen.routeName: (context) => const DiscoverScreen(),
+        DiscoverScreen.routeName: (context) => const DiscoverScreen(),
+      },
     );
   }
 }
