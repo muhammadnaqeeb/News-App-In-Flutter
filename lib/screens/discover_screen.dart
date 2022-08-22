@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:news/models/articals_model.dart';
+import 'package:news/screens/articals_screen.dart';
+import 'package:news/widgets/image_container.dart';
 import '../widgets/bottom_nav_bar.dart';
 
 class DiscoverScreen extends StatelessWidget {
@@ -6,24 +9,128 @@ class DiscoverScreen extends StatelessWidget {
   static const routeName = '/discover';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.menu,
-              color: Colors.black,
-            )),
+    List<String> tabs = ['Health', 'Politics', 'Art', 'Food', 'Sciene'];
+    return DefaultTabController(
+      initialIndex: 0,
+      length: tabs.length,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.menu,
+                color: Colors.black,
+              )),
+        ),
+        bottomNavigationBar: const BottomNavBar(index: 1),
+        body: ListView(
+          padding: const EdgeInsets.all(20.0),
+          children: [
+            const _DiscoverNews(),
+            CategoryNews(tabs: tabs),
+          ],
+        ),
       ),
-      bottomNavigationBar: const BottomNavBar(index: 1),
-      body: ListView(
-        padding: EdgeInsets.all(20.0),
-        children: [
-          _DiscoverNews(),
-        ],
-      ),
+    );
+  }
+}
+
+class CategoryNews extends StatelessWidget {
+  final List<String> tabs;
+  final articles = Article.articles;
+  CategoryNews({
+    Key? key,
+    required this.tabs,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        TabBar(
+          isScrollable: true,
+          indicatorColor: Colors.black,
+          tabs: tabs
+              .map((tab) => Tab(
+                    icon: Text(
+                      tab,
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineSmall!
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ),
+                  ))
+              .toList(),
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: TabBarView(
+            children: tabs
+                .map(
+                  (tab) => ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: articles.length,
+                    itemBuilder: ((context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, ArticalsScreen.routeName,
+                              arguments: articles[index]);
+                        },
+                        child: Row(
+                          children: [
+                            ImageContainer(
+                                width: 80,
+                                height: 80,
+                                margin: const EdgeInsets.all(10.0),
+                                borderRadius: 5,
+                                imageUrl: articles[index].imageUrl),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    articles[index].title,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.clip,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyLarge!
+                                        .copyWith(fontWeight: FontWeight.bold),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.visibility,
+                                        size: 18,
+                                      ),
+                                      const SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text(
+                                        '${articles[index].views}',
+                                        style: const TextStyle(fontSize: 12),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    }),
+                  ),
+                )
+                .toList(),
+          ),
+        )
+      ],
     );
   }
 }
