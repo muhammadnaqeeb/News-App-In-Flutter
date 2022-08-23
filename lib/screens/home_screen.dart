@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news/models/articals_model.dart';
 import 'package:news/screens/articals_screen.dart';
-import 'package:news/screens/discover_screen.dart';
 import 'package:news/widgets/custom_tag.dart';
 import '../widgets/bottom_nav_bar.dart';
 import '../widgets/image_container.dart';

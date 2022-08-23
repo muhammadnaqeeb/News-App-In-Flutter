@@ -44,7 +44,7 @@ class BottomNavBar extends StatelessWidget {
             margin: const EdgeInsets.only(right: 50),
             child: IconButton(
               onPressed: () {
-                print('No profile for now');
+                // print('No profile for now');
               },
               icon: const Icon(Icons.person),
             ),
