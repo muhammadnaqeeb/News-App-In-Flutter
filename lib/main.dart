@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news/screens/articals_screen.dart';
 import 'package:news/screens/discover_screen.dart';
 import 'package:news/screens/home_screen.dart';
+import 'package:news/screens/loading_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
+        LoadingScreen.routeName: (context) => LoadingScreen(),
         HomeScreen.routeName: (context) => const HomeScreen(),
         DiscoverScreen.routeName: (context) => const DiscoverScreen(),
         ArticalsScreen.routeName: (context) => const ArticalsScreen(),

@@ -11,10 +11,11 @@ class ArticalsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final article = ModalRoute.of(context)!.settings.arguments as Article;
+    final article = ModalRoute.of(context)!.settings.arguments as Map;
+    print(article);
     return ImageContainer(
       width: double.infinity,
-      imageUrl: article.imageUrl,
+      imageUrl: article['urlToImage'],
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
@@ -42,7 +43,7 @@ class _NewsBody extends StatelessWidget {
     required this.article,
   }) : super(key: key);
 
-  final Article article;
+  final Map article;
 
   @override
   Widget build(BuildContext context) {
@@ -62,13 +63,13 @@ class _NewsBody extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 10,
-                    backgroundImage: NetworkImage(article.authorImageUrl),
+                    backgroundImage: NetworkImage(article['urlToImage']),
                   ),
                   const SizedBox(
                     width: 10,
                   ),
                   Text(
-                    article.author,
+                    article['source']['name'],
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           color: Colors.white,
                         ),
@@ -89,7 +90,7 @@ class _NewsBody extends StatelessWidget {
                     width: 10,
                   ),
                   Text(
-                    '${DateTime.now().hour} h',
+                    '${DateTime.now().hour} h', ///////////////////////////////////////////////////////
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
@@ -108,7 +109,8 @@ class _NewsBody extends StatelessWidget {
                     width: 10,
                   ),
                   Text(
-                    '${article.views}',
+                    // '${article.views}',
+                    '1000+',
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
@@ -119,7 +121,7 @@ class _NewsBody extends StatelessWidget {
             height: 20,
           ),
           Text(
-            article.title,
+            article['title'],
             style: Theme.of(context)
                 .textTheme
                 .headlineSmall!
@@ -129,7 +131,7 @@ class _NewsBody extends StatelessWidget {
             height: 20,
           ),
           Text(
-            article.body,
+            article['content'],
             style:
                 Theme.of(context).textTheme.bodyMedium!.copyWith(height: 1.5),
           ),
@@ -146,7 +148,7 @@ class _NewsBody extends StatelessWidget {
             itemBuilder: ((context, index) {
               return ImageContainer(
                 width: MediaQuery.of(context).size.width * 0.42,
-                imageUrl: article.imageUrl,
+                imageUrl: article['urlToImage'],
                 margin: const EdgeInsets.only(right: 5.0, bottom: 5.0),
               );
             }),
@@ -158,7 +160,7 @@ class _NewsBody extends StatelessWidget {
 }
 
 class _NewsHeadline extends StatelessWidget {
-  final Article article;
+  final Map article;
   const _NewsHeadline({
     Key? key,
     required this.article,
@@ -179,7 +181,8 @@ class _NewsHeadline extends StatelessWidget {
             backgroundColor: Colors.grey.withAlpha(150),
             children: [
               Text(
-                article.category,
+                // article.category,
+                article['source']['name'],
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: Colors.white,
                     ),
@@ -190,7 +193,7 @@ class _NewsHeadline extends StatelessWidget {
             height: 10.0,
           ),
           Text(
-            article.title,
+            article['title'],
             style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -201,7 +204,7 @@ class _NewsHeadline extends StatelessWidget {
             height: 10.0,
           ),
           Text(
-            article.subtitle,
+            article['description'],
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                   color: Colors.white,
                 ),

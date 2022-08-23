@@ -2,13 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:news/models/articals_model.dart';
 import 'package:news/screens/articals_screen.dart';
 import 'package:news/widgets/custom_tag.dart';
+import '../services/networking.dart';
 import '../widgets/bottom_nav_bar.dart';
 import '../widgets/image_container.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+// String title = "";
+// String description = "";
+// String author = "";
+// String urlToImage = "";
+// String content = "";
+// String channalName = "";
 
-  static const routeName = '/';
+class HomeScreen extends StatefulWidget {
+  final newsData;
+  const HomeScreen({Key? key, this.newsData}) : super(key: key);
+
+  static const routeName = '/homeScreen';
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,9 +44,9 @@ class HomeScreen extends StatelessWidget {
       body: ListView(
         padding: EdgeInsets.zero,
         children: [
-          _NewsOfTheDay(),
+          _NewsOfTheDay(articles: widget.newsData['articles']),
           _BreakingNews(
-            articles: Article.articles,
+            articles: widget.newsData['articles'],
           ),
         ],
       ),
@@ -40,7 +55,7 @@ class HomeScreen extends StatelessWidget {
 }
 
 class _BreakingNews extends StatelessWidget {
-  final List<Article> articles;
+  final List<dynamic> articles;
 
   const _BreakingNews({
     Key? key,
@@ -81,19 +96,20 @@ class _BreakingNews extends StatelessWidget {
                         ArticalsScreen.routeName,
                         arguments: articles[index],
                       );
-                      // print(index);
+                      // print('----------------------');
+                      // print(articles[index]);
                     },
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ImageContainer(
                             width: MediaQuery.of(context).size.width * 0.5,
-                            imageUrl: articles[index].imageUrl),
+                            imageUrl: articles[index]['urlToImage']),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          articles[index].title,
+                          articles[index]['title'],
                           // this will allow to text be in onle 2 lines
                           maxLines: 2,
                           style: Theme.of(context)
@@ -103,7 +119,7 @@ class _BreakingNews extends StatelessWidget {
                                   fontWeight: FontWeight.bold, height: 1.5),
                         ),
                         Text(
-                          'by ${articles[index].author}',
+                          'by ${articles[index]['source']['name']}',
                           // this will allow to text be in onle 2 lines
                           maxLines: 2,
                           style: Theme.of(context)
@@ -128,8 +144,10 @@ class _BreakingNews extends StatelessWidget {
 }
 
 class _NewsOfTheDay extends StatelessWidget {
+  final articles;
   const _NewsOfTheDay({
     Key? key,
+    this.articles,
   }) : super(key: key);
 
   @override
@@ -137,7 +155,7 @@ class _NewsOfTheDay extends StatelessWidget {
     return ImageContainer(
       height: MediaQuery.of(context).size.height * 0.45,
       width: double.infinity,
-      imageUrl: Article.articles[1].imageUrl,
+      imageUrl: articles[0]['urlToImage'],
       padding: const EdgeInsets.all(20.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -158,7 +176,7 @@ class _NewsOfTheDay extends StatelessWidget {
             height: 10.0,
           ),
           Text(
-            Article.articles[0].title,
+            articles[0]['title'],
             style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                   fontWeight: FontWeight.bold,
                   height: 1.25,
