@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:news/screens/home_screen.dart';
+import 'package:news/screens/main_screen.dart';
 import '../services/networking.dart';
 
 class LoadingScreen extends StatefulWidget {
@@ -24,7 +25,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) {
-        return HomeScreen(
+        return MainScreen(
           newsData: newsData,
         );
       }),

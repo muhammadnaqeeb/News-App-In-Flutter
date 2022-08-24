@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:news/models/articals_model.dart';
 import 'package:news/screens/articals_screen.dart';
 import 'package:news/widgets/image_container.dart';
-import '../widgets/bottom_nav_bar.dart';
 
 class DiscoverScreen extends StatelessWidget {
-  const DiscoverScreen({Key? key}) : super(key: key);
+  final newsData;
+  const DiscoverScreen({Key? key, this.newsData}) : super(key: key);
   static const routeName = '/discover';
   @override
   Widget build(BuildContext context) {
@@ -24,12 +23,11 @@ class DiscoverScreen extends StatelessWidget {
                 color: Colors.black,
               )),
         ),
-        bottomNavigationBar: const BottomNavBar(index: 1),
         body: ListView(
           padding: const EdgeInsets.all(20.0),
           children: [
             const _DiscoverNews(),
-            CategoryNews(tabs: tabs),
+            CategoryNews(tabs: tabs, articles: newsData['articles']),
           ],
         ),
       ),
@@ -39,10 +37,11 @@ class DiscoverScreen extends StatelessWidget {
 
 class CategoryNews extends StatelessWidget {
   final List<String> tabs;
-  final articles = Article.articles;
+  final articles;
   CategoryNews({
     Key? key,
     required this.tabs,
+    required this.articles,
   }) : super(key: key);
 
   @override
@@ -51,7 +50,7 @@ class CategoryNews extends StatelessWidget {
       children: [
         TabBar(
           isScrollable: true,
-          indicatorColor: Colors.black,
+          indicatorColor: Colors.purple,
           tabs: tabs
               .map((tab) => Tab(
                     icon: Text(
@@ -85,14 +84,14 @@ class CategoryNews extends StatelessWidget {
                                 height: 80,
                                 margin: const EdgeInsets.all(10.0),
                                 borderRadius: 5,
-                                imageUrl: articles[index].imageUrl),
+                                imageUrl: articles[index]['urlToImage']),
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    articles[index].title,
+                                    articles[index]['title'],
                                     maxLines: 2,
                                     overflow: TextOverflow.clip,
                                     style: Theme.of(context)
@@ -106,14 +105,14 @@ class CategoryNews extends StatelessWidget {
                                   Row(
                                     children: [
                                       const Icon(
-                                        Icons.visibility,
+                                        Icons.newspaper,
                                         size: 18,
                                       ),
                                       const SizedBox(
                                         width: 5,
                                       ),
                                       Text(
-                                        '${articles[index].views}',
+                                        '${articles[index]['name']}',
                                         style: const TextStyle(fontSize: 12),
                                       )
                                     ],

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news/models/articals_model.dart';
 import 'package:news/screens/articals_screen.dart';
 import 'package:news/widgets/custom_tag.dart';
-import '../services/networking.dart';
-import '../widgets/bottom_nav_bar.dart';
 import '../widgets/image_container.dart';
 
 // String title = "";
@@ -14,8 +11,9 @@ import '../widgets/image_container.dart';
 // String channalName = "";
 
 class HomeScreen extends StatefulWidget {
-  final newsData;
-  const HomeScreen({Key? key, this.newsData}) : super(key: key);
+  dynamic newsData;
+
+  HomeScreen({Key? key, this.newsData}) : super(key: key);
 
   static const routeName = '/homeScreen';
 
@@ -24,6 +22,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    // print('===========================================');
+    // print(widget.newsData);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +45,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
       // making container behind the appBar
       extendBodyBehindAppBar: true,
-      bottomNavigationBar: const BottomNavBar(index: 0),
       body: ListView(
         padding: EdgeInsets.zero,
         children: [

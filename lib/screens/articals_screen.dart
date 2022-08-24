@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:news/widgets/image_container.dart';
-
-import '../models/articals_model.dart';
 import '../widgets/custom_tag.dart';
 
 class ArticalsScreen extends StatelessWidget {
@@ -12,7 +10,6 @@ class ArticalsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final article = ModalRoute.of(context)!.settings.arguments as Map;
-    print(article);
     return ImageContainer(
       width: double.infinity,
       imageUrl: article['urlToImage'],
