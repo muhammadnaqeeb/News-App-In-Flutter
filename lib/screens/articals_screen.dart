@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news/screens/webView_screen.dart';
 import 'package:news/widgets/image_container.dart';
 import '../widgets/custom_tag.dart';
 
@@ -133,7 +134,28 @@ class _NewsBody extends StatelessWidget {
                 Theme.of(context).textTheme.bodyMedium!.copyWith(height: 1.5),
           ),
           const SizedBox(
-            height: 20,
+            height: 0,
+          ),
+          Container(
+            alignment: Alignment.centerRight,
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return WebViewContainer(
+                      url: article['url'],
+                    );
+                  }),
+                );
+              },
+              child: const Text(
+                'more',
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 10,
           ),
           GridView.builder(
             shrinkWrap: true,

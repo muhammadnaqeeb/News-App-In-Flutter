@@ -36,7 +36,7 @@ class ImageContainer extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Colors.black.withOpacity(opacity ?? 0.4),
+          color: Colors.black.withOpacity(opacity ?? 0.45),
         ),
         padding: padding,
         child: child,
