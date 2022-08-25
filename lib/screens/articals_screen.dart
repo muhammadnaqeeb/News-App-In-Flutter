@@ -87,7 +87,7 @@ class _NewsBody extends StatelessWidget {
                     width: 10,
                   ),
                   Text(
-                    '${DateTime.now().hour} h', ///////////////////////////////////////////////////////
+                    '${DateTime.now().hour} h',
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
@@ -144,6 +144,7 @@ class _NewsBody extends StatelessWidget {
             ),
             itemBuilder: ((context, index) {
               return ImageContainer(
+                opacity: 0.0,
                 width: MediaQuery.of(context).size.width * 0.42,
                 imageUrl: article['urlToImage'],
                 margin: const EdgeInsets.only(right: 5.0, bottom: 5.0),
