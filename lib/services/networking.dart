@@ -5,7 +5,7 @@ class NetworkHelper {
   NetworkHelper();
   Future getData() async {
     http.Response response = await http.get(Uri.parse(
-        "https://newsapi.org/v2/everything?q=pakistan&apiKey=fbba9ecd2fae4e8e90d8ffcfce9cd38c"));
+        "https://newsapi.org/v2/everything?q=us&apiKey=fbba9ecd2fae4e8e90d8ffcfce9cd38c"));
 
     //print(response.body);
 // print(response.statusCode);

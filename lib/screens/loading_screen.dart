@@ -22,14 +22,11 @@ class _LoadingScreenState extends State<LoadingScreen> {
     NetworkHelper networkHelper = NetworkHelper();
     var newsData = await networkHelper.getData();
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) {
-        return MainScreen(
-          newsData: newsData,
-        );
-      }),
-    );
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) {
+      return MainScreen(
+        newsData: newsData,
+      );
+    }), ((route) => false));
   }
 
   @override

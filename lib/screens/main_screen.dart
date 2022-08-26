@@ -3,6 +3,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:news/screens/discover_screen.dart';
 import 'package:news/screens/home_screen.dart';
+import 'package:news/screens/newsletter_screen.dart';
 
 dynamic _data;
 
@@ -29,6 +30,7 @@ class _MainScreenState extends State<MainScreen> {
     final screens = [
       HomeScreen(newsData: _data),
       DiscoverScreen(newsData: _data),
+      NewsletterScreen()
     ];
     return Scaffold(
         body: screens[c_index],
@@ -60,11 +62,8 @@ class _MainScreenState extends State<MainScreen> {
             BottomNavigationBarItem(
               icon: Container(
                 margin: const EdgeInsets.only(right: 50),
-                child: IconButton(
-                  onPressed: () {
-                    // print('No profile for now');
-                  },
-                  icon: const Icon(Icons.person),
+                child: Icon(
+                  (Icons.person),
                 ),
               ),
               label: 'Person',
