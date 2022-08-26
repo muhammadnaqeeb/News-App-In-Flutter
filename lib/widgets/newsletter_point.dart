@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'custom_tag.dart';
 
 class NewsletterPoint extends StatelessWidget {
-  final pointNo;
-  final pointText;
-  final color;
+  final int pointNo;
+  final String pointText;
+  final Color color;
   NewsletterPoint({
     required this.color,
     required this.pointNo,
@@ -22,7 +22,7 @@ class NewsletterPoint extends StatelessWidget {
           child: CustomTag(backgroundColor: color, children: [
             Text(
               '    $pointNo    ',
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
           ]),
         ),

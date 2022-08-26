@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:news/screens/home_screen.dart';
 import 'package:news/screens/main_screen.dart';
 import '../services/networking.dart';
 

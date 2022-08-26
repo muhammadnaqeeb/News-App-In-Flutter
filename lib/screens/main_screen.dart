@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:news/screens/discover_screen.dart';
 import 'package:news/screens/home_screen.dart';
 import 'package:news/screens/newsletter_screen.dart';
@@ -55,14 +53,14 @@ class _MainScreenState extends State<MainScreen> {
               ),
               label: 'Home',
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon((Icons.search)),
               label: 'Search',
             ),
             BottomNavigationBarItem(
               icon: Container(
                 margin: const EdgeInsets.only(right: 50),
-                child: Icon(
+                child: const Icon(
                   (Icons.person),
                 ),
               ),

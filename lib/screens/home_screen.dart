@@ -3,13 +3,6 @@ import 'package:news/screens/articals_screen.dart';
 import 'package:news/widgets/custom_tag.dart';
 import '../widgets/image_container.dart';
 
-// String title = "";
-// String description = "";
-// String author = "";
-// String urlToImage = "";
-// String content = "";
-// String channalName = "";
-
 class HomeScreen extends StatefulWidget {
   dynamic newsData;
 
@@ -24,7 +17,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
-    // print('===========================================');
     // print(widget.newsData);
     super.initState();
   }

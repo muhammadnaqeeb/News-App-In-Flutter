@@ -154,7 +154,7 @@ class _NewsBody extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           GridView.builder(
