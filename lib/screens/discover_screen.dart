@@ -132,6 +132,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                               height: 80,
                               margin: const EdgeInsets.all(10.0),
                               borderRadius: 5,
+                              opacity: 0,
                               imageUrl: articlesListForSearch[index]
                                   ['urlToImage']),
                           Expanded(
