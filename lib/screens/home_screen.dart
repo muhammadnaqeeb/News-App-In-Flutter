@@ -60,6 +60,8 @@ class _BreakingNews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var portraitMode =
+        MediaQuery.of(context).orientation == Orientation.portrait;
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Column(
@@ -76,14 +78,18 @@ class _BreakingNews extends StatelessWidget {
             height: 20.0,
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.3,
+            height: portraitMode
+                ? MediaQuery.of(context).size.height * 0.3
+                : MediaQuery.of(context).size.height * 0.7,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: articles.length,
               itemBuilder: (context, index) {
                 return Container(
                   // giving width will make more text to go on next line
-                  width: MediaQuery.of(context).size.width * 0.5,
+                  width: portraitMode
+                      ? MediaQuery.of(context).size.width * 0.5
+                      : MediaQuery.of(context).size.width * 0.3,
                   margin: const EdgeInsets.only(right: 10.0),
                   child: InkWell(
                     onTap: () {
@@ -149,8 +155,12 @@ class _NewsOfTheDay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var portraitMode =
+        MediaQuery.of(context).orientation == Orientation.portrait;
     return ImageContainer(
-      height: MediaQuery.of(context).size.height * 0.45,
+      height: portraitMode
+          ? MediaQuery.of(context).size.height * 0.45
+          : MediaQuery.of(context).size.height * 0.75,
       width: double.infinity,
       imageUrl: articles[0]['urlToImage'],
       padding: const EdgeInsets.all(20.0),

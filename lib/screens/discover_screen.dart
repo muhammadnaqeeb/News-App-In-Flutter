@@ -37,6 +37,8 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var isPortraitMode =
+        MediaQuery.of(context).orientation == Orientation.portrait;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -54,7 +56,9 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
           // Discover News
           // const _DiscoverNews(),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.25,
+            height: isPortraitMode
+                ? MediaQuery.of(context).size.height * 0.25
+                : MediaQuery.of(context).size.height * 0.4,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,

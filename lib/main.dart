@@ -21,10 +21,10 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         LoadingScreen.routeName: (context) => LoadingScreen(),
-        MainScreen.routeName: (context) => MainScreen(),
+        MainScreen.routeName: (context) => const MainScreen(),
         //HomeScreen.routeName: (context) => HomeScreen(),
         //DiscoverScreen.routeName: (context) => const DiscoverScreen(),
-        ArticalsScreen.routeName: (context) => ArticalsScreen(),
+        ArticalsScreen.routeName: (context) => const ArticalsScreen(),
       },
     );
   }
