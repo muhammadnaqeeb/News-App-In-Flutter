@@ -64,7 +64,7 @@ class _NewsBody extends StatelessWidget {
                     backgroundImage: NetworkImage(article['urlToImage']),
                   ),
                   const SizedBox(
-                    width: 10,
+                    width: 4,
                   ),
                   Text(
                     article['source']['name'],
@@ -75,7 +75,7 @@ class _NewsBody extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                width: 10,
+                width: 4,
               ),
               CustomTag(
                 backgroundColor: Colors.grey.shade200,
@@ -85,16 +85,16 @@ class _NewsBody extends StatelessWidget {
                     color: Colors.grey,
                   ),
                   const SizedBox(
-                    width: 10,
+                    width: 3,
                   ),
                   Text(
-                    '${DateTime.now().hour} h',
+                    '${DateTime.now().hour}h',
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
               ),
               const SizedBox(
-                width: 10,
+                width: 4,
               ),
               CustomTag(
                 backgroundColor: Colors.grey.shade200,
@@ -104,11 +104,11 @@ class _NewsBody extends StatelessWidget {
                     color: Colors.grey,
                   ),
                   const SizedBox(
-                    width: 10,
+                    width: 3,
                   ),
                   Text(
                     // '${article.views}',
-                    '1000+',
+                    '1k+',
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
@@ -129,7 +129,7 @@ class _NewsBody extends StatelessWidget {
             height: 20,
           ),
           Text(
-            article['content'],
+            '${article['content'].length > 12 ? article['content'].substring(0, 200) : article['content']}',
             style:
                 Theme.of(context).textTheme.bodyMedium!.copyWith(height: 1.5),
           ),
